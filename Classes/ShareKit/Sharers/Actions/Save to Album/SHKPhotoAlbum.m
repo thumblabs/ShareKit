@@ -71,7 +71,7 @@
 	if (item.shareType == SHKShareTypeImage)
 		[self writeImageToAlbum];
 	// Notify user
-	[[SHKActivityIndicator currentIndicator] displayCompleted:SHKLocalizedString(@"Saved!")];
+	[[SHKActivityIndicator currentIndicator] displayCompleted:SHKLocalizedString(@"Shared")];
 	
 	// Notify delegate, but quietly
 	self.quiet = YES;

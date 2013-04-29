@@ -24,7 +24,7 @@
 - (void)sharerFinishedSending:(SHKSharer *)sharer
 {
 	if (!sharer.quiet)
-		[[SHKActivityIndicator currentIndicator] displayCompleted:SHKLocalizedString(@"Saved!")];
+		[[SHKActivityIndicator currentIndicator] displayCompleted:SHKLocalizedString(@"Shared")];
 }
 
 - (void)sharer:(SHKSharer *)sharer failedWithError:(NSError *)error shouldRelogin:(BOOL)shouldRelogin
