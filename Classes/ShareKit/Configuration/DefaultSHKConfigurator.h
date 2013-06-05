@@ -30,7 +30,7 @@
  ------
  To show ShareKit specific debug output in the console, define _SHKDebugShowLogs (uncomment next line).
  */
-//#define _SHKDebugShowLogs
+#define _SHKDebugShowLogs
 
 #ifdef _SHKDebugShowLogs
 #define SHKDebugShowLogs			1
@@ -42,6 +42,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class SHKFile;
+
 @interface DefaultSHKConfigurator : NSObject 
 
 - (NSString*)appName;
@@ -49,16 +51,19 @@
 - (NSArray*)defaultFavoriteURLSharers;
 - (NSArray*)defaultFavoriteImageSharers;
 - (NSArray*)defaultFavoriteTextSharers;
-- (NSArray*)defaultFavoriteFileSharers;
+- (NSArray*)defaultFavoriteFileSharers __attribute__((deprecated("use defaultFavoriteSharersForFile: instead")));
+- (NSArray*)defaultFavoriteSharersForMimeType:(NSString *)mimeType __attribute__((deprecated("use defaultFavoriteSharersForFile: instead")));
+- (NSArray*)defaultFavoriteSharersForFile:(SHKFile *)file;
 - (NSString*)vkontakteAppId;
 - (NSString*)facebookAppId;
 - (NSString*)facebookLocalAppId;
 - (NSArray*)facebookWritePermissions;
 - (NSArray*)facebookReadPermissions;
 - (NSNumber*)forcePreIOS6FacebookPosting;
-- (NSString*)readItLaterKey;
+- (NSString *)pocketConsumerKey;
 - (NSString*)diigoKey;
 - (NSNumber*)forcePreIOS5TwitterAccess;
+- (NSString*)googlePlusClientId;
 - (NSString*)twitterConsumerKey;
 - (NSString*)twitterSecret;
 - (NSString*)twitterCallbackUrl;
@@ -80,13 +85,27 @@
 - (NSNumber*)readabilityUseXAuth;
 - (NSString*)foursquareV2ClientId;
 - (NSString*)foursquareV2RedirectURI;
+- (NSString*)tumblrConsumerKey;
+- (NSString*)tumblrSecret;
+- (NSString*)tumblrCallbackUrl;
+- (NSString*)hatenaConsumerKey;
+- (NSString*)hatenaSecret;
+- (NSString*)hatenaScope;
+- (NSString *)plurkAppKey;
+- (NSString *)plurkAppSecret;
+- (NSString *)plurkCallbackURL;
+- (NSNumber*)instagramLetterBoxImages;
+- (UIColor*)instagramLetterBoxColor;
+- (NSString*)youTubeConsumerKey;
+- (NSString*)youTubeSecret;
 - (NSNumber*)shareMenuAlphabeticalOrder;
 - (NSString*)barStyle;
 - (UIColor*)barTintForView:(UIViewController*)vc;
 - (UIColor*)formFontColor;
 - (UIColor*)formBackgroundColor;
 - (NSString*)modalPresentationStyleForController:(UIViewController *)controller;
-- (NSString*)modalTransitionStyle;
+- (NSString*)modalTransitionStyleForController:(UIViewController *)controller;
+- (NSNumber *)isUsingCocoaPods;
 - (NSNumber*)maxFavCount;
 - (NSNumber*)autoOrderFavoriteSharers;
 - (NSString*)favsPrefixKey;
@@ -114,4 +133,9 @@
 - (NSArray *)textMessageToRecipients;
 //SHKInstagram and future others
 -(NSString*) popOverSourceRect;
+//SHKDropbox
+-(NSString *)dropboxAppKey;
+-(NSString *)dropboxAppSecret;
+-(NSString *)dropboxRootFolder;
+-(BOOL)dropboxShouldOverwriteExistedFile;
 @end
